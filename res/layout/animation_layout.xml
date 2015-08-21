@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/translate_anim_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="translate animation" />
+
+    <FrameLayout
+        android:id="@+id/anim_root_fl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dip" >
+
+        <Button
+            android:id="@+id/translate_anim_two_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="translate two animation" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/transcale_anim_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/translate_anim_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试setAnimation执行条件"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" 
+            android:translationY="100dp"/>
+
+        <TextView
+            android:id="@+id/translate_anim_temp_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/translate_anim_tv"
+            android:text="测试Animation Translate 移动后位置是否改变"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+</LinearLayout>

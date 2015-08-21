@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="px to sp" />
+
+    <EditText
+        android:id="@+id/sp_px_value_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/sp_convert_value_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/sp_convert_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sp转换" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="px to dip" />
+
+    <EditText
+        android:id="@+id/dip_px_value_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/dip_convert_value_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/dip_convert_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dip转换" />
+
+</LinearLayout>

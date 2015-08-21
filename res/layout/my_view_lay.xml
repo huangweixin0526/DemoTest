@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/my_view_root_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/my_view_draw_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="绘制" />
+
+    <Button
+        android:id="@+id/my_view_post_draw_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post绘制" />
+    
+    <Button
+        android:id="@+id/request_layout_draw_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="request layout" />
+
+    <com.android.weixin.demotest.widget.MyTestView
+        android:id="@+id/my_test_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</LinearLayout>

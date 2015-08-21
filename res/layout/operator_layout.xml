@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/signed_left_move_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有符号左位移运算符" />
+
+    <TextView
+        android:id="@+id/signed_left_move_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有符号左位移运算符" />
+
+    <Button
+        android:id="@+id/signed_right_move_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有符号右位移运算符" />
+
+    <TextView
+        android:id="@+id/signed_left_move_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有符号左位移运算符" />
+
+    <Button
+        android:id="@+id/unsigned_right_move_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="无符号右位移运算符" />
+
+    <TextView
+        android:id="@+id/signed_left_move_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有符号左位移运算符" />
+
+</LinearLayout>

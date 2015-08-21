@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_click"
+    android:descendantFocusability="beforeDescendants"
+    android:orientation="vertical"
+    android:paddingBottom="10dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:paddingTop="5dip" >
+
+    <TextView
+        android:id="@+id/note_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ellipsize="end"
+        android:lineSpacingExtra="0dp"
+        android:singleLine="true"
+        android:textColor="#ff7e6258"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/note_list_share_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/note_title_tv"
+        android:layout_marginRight="10dip"
+        android:contentDescription="点击分享笔记"
+        android:src="@drawable/bottom_share_select"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/bt_listitem_recommend_headshow_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/note_title_tv"
+        android:layout_margin="3dp"
+        android:layout_toLeftOf="@id/note_list_share_iv"
+        android:background="@drawable/btn_book_add"
+        android:text="添加收藏"
+        android:textSize="18sp" />
+
+</RelativeLayout>

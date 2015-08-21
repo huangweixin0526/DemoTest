@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 该项要放前面才能生效 -->
+    <item android:drawable="@drawable/icon_favour_click" android:state_selected="true"></item>
+    <!-- 如果该项放前面则不能生效 -->
+    <item android:drawable="@drawable/icon_favour"></item>
+
+</selector>

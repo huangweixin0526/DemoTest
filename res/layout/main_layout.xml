@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/root_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击" >
+            </Button>
+
+            <Button
+                android:id="@+id/display_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dip"
+                android:text="转换" >
+            </Button>
+
+            <Button
+                android:id="@+id/list_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="List" >
+            </Button>
+
+            <Button
+                android:id="@+id/list_item_type_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="List Item Type" >
+            </Button>
+
+            <Button
+                android:id="@+id/lifecycle_fragment_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="fragment lifecyc" >
+            </Button>
+
+            <Button
+                android:id="@+id/lifecycle_Activity_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="activity lifecyc" >
+            </Button>
+
+            <Button
+                android:id="@+id/my_view_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="MyView" >
+            </Button>
+
+            <Button
+                android:id="@+id/single_line_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="SingleLine" >
+            </Button>
+
+            <Button
+                android:id="@+id/traffic_stats_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="流量监控" />
+
+            <Button
+                android:id="@+id/overflow_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="Overflow" />
+
+            <Button
+                android:id="@+id/thread_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="Thread" />
+
+            <Button
+                android:id="@+id/spinner_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="下拉框" />
+
+            <Button
+                android:id="@+id/gc_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="GC" />
+
+            <Button
+                android:id="@+id/view_state_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="state" />
+
+            <Button
+                android:id="@+id/touch_point_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="touch point" />
+
+            <Button
+                android:id="@+id/db_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="数据库" />
+            
+            <Button
+                android:id="@+id/file_click_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="File" />
+            
+            <Button
+                android:id="@+id/view_pager_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="View Pager" />
+            
+            <Button
+                android:id="@+id/operator_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="运算符" />
+            
+            <Button
+                android:id="@+id/animation_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="Animation" />
+            <Button
+                android:id="@+id/surface_view_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="Surface View" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

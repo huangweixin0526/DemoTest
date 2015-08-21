@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/fragment_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add" />
+
+    <Button
+        android:id="@+id/fragment_replace_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="replace" />
+
+    <Button
+        android:id="@+id/fragment_attach_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="attach" />
+
+    <Button
+        android:id="@+id/fragment_show_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show" />
+
+    <Button
+        android:id="@+id/fragment_hide_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hide" />
+
+    <Button
+        android:id="@+id/fragment_detach_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detach" />
+
+    <Button
+        android:id="@+id/fragment_remove_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="remove" />
+    
+    <Button
+        android:id="@+id/naviagtion_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="naviagtion" />
+
+    <FrameLayout
+        android:id="@+id/fragment_root_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</LinearLayout>
