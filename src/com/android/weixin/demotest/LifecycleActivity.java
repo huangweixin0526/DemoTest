@@ -31,6 +31,7 @@ public class LifecycleActivity extends Activity implements OnClickListener {
 			Log.i("-->", "Intent Is Null");
 		}
 		Log.i("-->", "onCreate");
+		//finish();
 	}
 
 	@Override

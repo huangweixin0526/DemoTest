@@ -78,9 +78,11 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 		String str = Integer.toBinaryString(-10);
 
 		String ss = " ";
+		
 		if (TextUtils.isEmpty(ss)) {
 			Log.v(TAG, "is empty");
-		}
+		} 
+		
 	}
 
 	private void testJSON() {
@@ -325,5 +327,4 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 		Log.v("-->", "onLongClick");
 		return true;
 	}
-
 }

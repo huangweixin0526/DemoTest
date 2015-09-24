@@ -53,7 +53,7 @@ public class MyTestView extends View {
 
 	public MyTestView(Context context, AttributeSet attrs, int defStyle) {
 		super(context);
-		
+
 	}
 
 	/**
@@ -106,11 +106,11 @@ public class MyTestView extends View {
 			// thread.start();
 			// measureText(canvas);
 			Log.i("-->", "Draw");
-		    canvas.drawBitmap(cacheBitmap2, 0, 0, null);
+			canvas.drawBitmap(cacheBitmap2, 0, 0, null);
 			// savaCount(canvas);
-		    if(!cacheBitmap2.isRecycled()){
-		    	cacheBitmap2.recycle();
-		    }
+			if (!cacheBitmap2.isRecycled()) {
+				cacheBitmap2.recycle();
+			}
 			Drawable bgDrawable1 = new ColorDrawable(0xff36373a);
 			bgDrawable1.setBounds(0, 100, 500, 500);
 			bgDrawable1.draw(canvas);
@@ -130,7 +130,7 @@ public class MyTestView extends View {
 		mCanvas.drawColor(Color.GREEN);
 		mCanvas.save();
 		Log.i("-->", "Save Count：" + canvas.getSaveCount());
-		
+
 	}
 
 	private void measureText(Canvas canvas) {
@@ -272,9 +272,22 @@ public class MyTestView extends View {
 	 * 决定View的大小。 父元素需要调整子元素的大小，所以有时会执行多次 measure时父View会让各个子View
 	 * Measure　自己的大小，然后如果父View觉得太大或太小即不合适的话会要求子View重新Measure <br/>
 	 * 如果高度或宽度为0，则onDraw将不进行调用.
+	 * 
+	 * <br/>
+	 * 
+	 * 一个MeasureSpec封装了父布局传递给子布局的布局要求，每个MeasureSpec代表了一组宽度和高度的要求。
+	 * 一个MeasureSpec由大小和模式组成 。 它有三种模式：
+	 * UNSPECIFIED(未指定),父元素部队自元素施加任何束缚，子元素可以得到任意想要的大小 ；
+	 * EXACTLY(完全)，父元素决定自元素的确切大小 ，子元素将被限定在给定的边界里而忽略它本身大小；
+	 * AT_MOST(至多)，子元素至多达到指定大小的值。
+	 * 
+	 * 它常用的三个函数：<br/>
+	   * 　1.static int getMode(int measureSpec):根据提供的测量值(格式)提取模式(上述三个模式之一) 　<br/>
+	   * 　2.static int getSize(int  measureSpec):根据提供的测量值(格式)提取大小值(这个大小也就是我们通常所说的大小)  <br/>
+	   * 　3.static int makeMeasureSpec(int size,int mode):根据提供的大小值和模式创建一个测量值(格式)
 	 */
 	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {		
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 
