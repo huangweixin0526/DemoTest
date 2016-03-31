@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -52,6 +53,7 @@ public class FramentLifecycleActivity extends FragmentActivity implements
 		mNaviagtion.setOnClickListener(this);
 
 		fm = getSupportFragmentManager();
+		Log.v("--->", "FramentLifecycle Activity onCreate");
 	}
 
 	@Override
@@ -159,5 +161,17 @@ public class FramentLifecycleActivity extends FragmentActivity implements
 		args.putString(LifecycleFragment.PARAMS, params);
 		lifecycle.setArguments(args);
 		return lifecycle;
+	}
+	
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {		
+		super.onRestoreInstanceState(savedInstanceState);
+		Log.v("--->", "FramentLifecycle Activity onRestoreInstanceState");
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {		
+		super.onSaveInstanceState(outState);
+		Log.v("--->", "FramentLifecycle Activity onSaveInstanceState");
 	}
 }

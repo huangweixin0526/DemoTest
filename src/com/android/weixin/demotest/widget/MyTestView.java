@@ -18,7 +18,10 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.MeasureSpec;
 import android.widget.TextView;
 
 import com.android.weixin.demotest.R;
@@ -53,7 +56,15 @@ public class MyTestView extends View {
 
 	public MyTestView(Context context, AttributeSet attrs, int defStyle) {
 		super(context);
+		// 设置键盘模式是否能获得焦点
+		setFocusable(true);
+		// 设置触摸模式是否能获得焦点
+		setFocusableInTouchMode(true);
+	}
 
+	View appendView = ((LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.append_view_to_view_lay, null, false);
+	{
+		measureView(appendView);
 	}
 
 	/**
@@ -106,18 +117,20 @@ public class MyTestView extends View {
 			// thread.start();
 			// measureText(canvas);
 			Log.i("-->", "Draw");
-			canvas.drawBitmap(cacheBitmap2, 0, 0, null);
+			// canvas.drawBitmap(cacheBitmap2, 0, 0, null);
 			// savaCount(canvas);
 			if (!cacheBitmap2.isRecycled()) {
 				cacheBitmap2.recycle();
 			}
 			Drawable bgDrawable1 = new ColorDrawable(0xff36373a);
 			bgDrawable1.setBounds(0, 100, 500, 500);
-			bgDrawable1.draw(canvas);
+			// bgDrawable1.draw(canvas);
 
 			Drawable bgDrawable2 = new ColorDrawable(0xff282a2e);
 			bgDrawable2.setBounds(0, 100, 400, 400);
-			bgDrawable2.draw(canvas);
+			// bgDrawable2.draw(canvas);
+
+			appendView.draw(canvas);
 		}
 		Log.e("--->", "onDraw end");
 	}
@@ -269,8 +282,8 @@ public class MyTestView extends View {
 
 	/**
 	 * 
-	 * 决定View的大小。 父元素需要调整子元素的大小，所以有时会执行多次 measure时父View会让各个子View
-	 * Measure　自己的大小，然后如果父View觉得太大或太小即不合适的话会要求子View重新Measure <br/>
+	 * 决定View的大小。 父元素需要调整子元素的大小，所以有时会执行多次 measure时父View会让各个子View Measure
+	 * 自己的大小，然后如果父View觉得太大或太小即不合适的话会要求子View重新Measure <br/>
 	 * 如果高度或宽度为0，则onDraw将不进行调用.
 	 * 
 	 * <br/>
@@ -282,12 +295,13 @@ public class MyTestView extends View {
 	 * AT_MOST(至多)，子元素至多达到指定大小的值。
 	 * 
 	 * 它常用的三个函数：<br/>
-	   * 　1.static int getMode(int measureSpec):根据提供的测量值(格式)提取模式(上述三个模式之一) 　<br/>
-	   * 　2.static int getSize(int  measureSpec):根据提供的测量值(格式)提取大小值(这个大小也就是我们通常所说的大小)  <br/>
-	   * 　3.static int makeMeasureSpec(int size,int mode):根据提供的大小值和模式创建一个测量值(格式)
+	 * 1.static int getMode(int measureSpec):根据提供的测量值(格式)提取模式(上述三个模式之一) <br/>
+	 * 2.static int getSize(int measureSpec):根据提供的测量值(格式)提取大小值(这个大小也就是我们通常所说的大小)
+	 * <br/>
+	 * 3.static int makeMeasureSpec(int size,int mode):根据提供的大小值和模式创建一个测量值(格式)
 	 */
 	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {		
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 
@@ -299,5 +313,48 @@ public class MyTestView extends View {
 	@Override
 	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
+	}
+
+	public class AppendView extends TextView {
+
+		public AppendView(Context context) {
+			super(context);
+		}
+
+		@Override
+		protected void onDraw(Canvas canvas) {
+			super.onDraw(canvas);
+		}
+
+		@Override
+		protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+			// TODO Auto-generated method stub
+			super.onMeasure(200, 200);
+		}
+	}
+
+	/**
+	 * 测量view的宽高
+	 * 
+	 * @param child
+	 */
+	private void measureView(View child) {
+
+		ViewGroup.LayoutParams lp = child.getLayoutParams();
+
+		if (lp == null) {
+			lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+		}
+
+		int childMeasureWidth = ViewGroup.getChildMeasureSpec(0, 0, lp.width);
+		int childMeasureHeight;
+
+		if (lp.height > 0) {
+			childMeasureHeight = MeasureSpec.makeMeasureSpec(lp.height, MeasureSpec.EXACTLY);
+		} else {
+			childMeasureHeight = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+		}
+
+		child.measure(childMeasureWidth, childMeasureHeight);
 	}
 }

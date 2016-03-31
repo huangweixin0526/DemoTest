@@ -11,6 +11,10 @@ import android.widget.Button;
 /**
  * Activity生命周期
  * 
+ * 跳转下一个页面时页面会调用onSaveInstanceState，当屏幕方向转换Activity重建时处于后台的页面并不会重建，而且返回下一级页面onRestoreInstanceState并不会触发调用。
+ * 
+ * 如果结束进程，会重建上一级页面，这时如果在返回上一级页面，上一级页面也会重建。如果页面被系统Kill则会调用onSaveInstanceState
+ * 
  * @author weixin
  * 
  */
@@ -30,7 +34,7 @@ public class LifecycleActivity extends Activity implements OnClickListener {
 		} else {
 			Log.i("-->", "Intent Is Null");
 		}
-		Log.i("-->", "onCreate");
+		Log.i("--->", "Lifecycle Activity onCreate");
 		//finish();
 	}
 
@@ -162,5 +166,17 @@ public class LifecycleActivity extends Activity implements OnClickListener {
 	public boolean moveTaskToBack(boolean nonRoot) {
 		// TODO 把这个Activity所在的Task移到后台(background,此时将回到Home或者之前的Task)
 		return super.moveTaskToBack(nonRoot);
+	}
+	
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {		
+		super.onRestoreInstanceState(savedInstanceState);
+		Log.v("--->", "Lifecycle Activity onRestoreInstanceState");
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {		
+		super.onSaveInstanceState(outState);
+		Log.v("--->", "Lifecycle Activity onSaveInstanceState");
 	}
 }

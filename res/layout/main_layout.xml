@@ -167,6 +167,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dip"
                 android:text="Surface View" />
+            <Button
+                android:id="@+id/clip_view_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="Clip" />
+            <Button
+                android:id="@+id/egg_frenzy_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:text="Egg Frenzy" />
         </LinearLayout>
     </ScrollView>
 

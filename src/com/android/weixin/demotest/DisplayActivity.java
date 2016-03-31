@@ -3,6 +3,7 @@ package com.android.weixin.demotest;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -35,6 +36,18 @@ public class DisplayActivity extends Activity implements OnClickListener {
 		mSpConvertBtn.setOnClickListener(this);
 		mDpConvertBtn = (Button) findViewById(R.id.dip_convert_btn);
 		mDpConvertBtn.setOnClickListener(this);
+	}
+	
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		Log.v("--->", "Display Activity onRestoreInstanceState");
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		Log.v("--->", "Display Activity onSaveInstanceState");
 	}
 
 	@Override

@@ -1,16 +1,26 @@
 package com.android.weixin.demotest;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.android.weixin.demotest.iface.IRead;
+import com.android.weixin.demotest.utils.TestClass;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ActivityGroup;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -19,6 +29,8 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.HandlerThread;
+import android.os.MemoryFile;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -26,14 +38,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.LruCache;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.android.weixin.demotest.iface.IRead;
-import com.android.weixin.demotest.utils.TestClass;
 
 public class MainActivity extends Activity implements OnClickListener, OnLongClickListener {
 
@@ -43,6 +52,7 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 	private Button mThread, mSpinner, mItemType, mLifecycleFra, mLifecycleAct;
 	private Button mGcBtn, mViewStateBtn, mTouchPoint, mDBBtn, mFileBtn;
 	private Button mViewPagerBtn, mOperatorBtn, mAnimationBtn, mSurfaceViewBtn;
+	private Button mClipBtn,mEggFrenzyBtn;
 
 	private Map<Integer, String> mMap = new HashMap<Integer, String>();
 
@@ -59,10 +69,17 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 		// AudioManager
 		// FragmentManager
 		// InputMethodManager
-
+		// PowerManager
 		// LoaderManager 提供异步加载数据
-
+		// DownloadManager
+		// PreferenceManager
+		
 		// ActivityGroup.getLocalActivityManager
+		MemoryFile memoryFile;
+
+		HandlerThread thread;
+
+		LruCache lruCache;
 
 		FragmentPagerAdapter f;
 		FragmentStatePagerAdapter s;
@@ -71,19 +88,41 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 		TabActivity tab;
 		ActivityGroup group;
 		ActionBar bar;
-
+		IntentService intentService;
 		FragmentActivity frament;
 		ActionBarActivity barActivity;
 
 		String str = Integer.toBinaryString(-10);
 
 		String ss = " ";
+
 		
 		if (TextUtils.isEmpty(ss)) {
 			Log.v(TAG, "is empty");
-		} 
-		
+		}
+		// AsyncTask<Params, Progress, Result>
+		// DrawerLayout
+
 	}
+
+	private void getActivityManager(){
+		ActivityManager manager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
+		
+		List<RunningTaskInfo> runningTaskInfos = manager.getRunningTasks(1) ;
+		
+		(runningTaskInfos.get(0).topActivity).toString();
+	}
+
+	Map<String, Object> maps = new TreeMap<>();
+	Map<String, Object> mapsTable = new Hashtable<String, Object>();
+
+	List<String> ss = new ArrayList<String>() {
+
+		// 非静态块，在构造函数前执行
+		{
+			// add("adas");
+		}
+	};
 
 	private void testJSON() {
 		String[] array = new String[] { "（形）重要：～点｜～事｜主～｜紧～。", "（名）重要的内容：纲～｜摘～｜提～。", "希望得到；希望保持：他～了个口琴" };
@@ -153,6 +192,10 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 		mAnimationBtn.setOnClickListener(this);
 		mSurfaceViewBtn = (Button) findViewById(R.id.surface_view_btn);
 		mSurfaceViewBtn.setOnClickListener(this);
+		mClipBtn = (Button) findViewById(R.id.clip_view_btn);
+		mClipBtn.setOnClickListener(this);
+		mEggFrenzyBtn = (Button) findViewById(R.id.egg_frenzy_btn);
+		mEggFrenzyBtn.setOnClickListener(this);
 
 		Canvas canvas = new Canvas();
 
@@ -161,6 +204,30 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 		if (savedInstanceState != null) {
 			Log.v(TAG, "savedInstanceState not null");
 		}
+		Log.v("--->", "Main Activity onCreate");
+		
+		String str1 = "Epub";
+		if(str1 == "Epub".intern()){
+			
+		}
+		
+		String str2 = "Epub";
+		
+		
+		final float level;
+		level = .111f;
+	}
+	
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {		
+		super.onRestoreInstanceState(savedInstanceState);
+		Log.v("--->", "Main Activity onRestoreInstanceState");
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {		
+		super.onSaveInstanceState(outState);
+		Log.v("--->", "Main Activity onSaveInstanceState");
 	}
 
 	@Override
@@ -175,10 +242,16 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 			// Intent intent = new Intent(this, WBShareMainActivity.class);
 			// startActivityForResult(intent, 100);
 			// storageDir();
+
+			String str1 = null;
+			Object obj1 = str1;
+			String str2 = (String) obj1;
+
 			Object obj = getParams();
 			Object[] objs = (Object[]) obj;
 			Log.v("-->", "onClick");
-			testHideOverride();
+			//testHideOverride();
+			getActivityManager();
 			break;
 		case R.id.display_click_btn:
 			Intent disIntent = new Intent(this, DisplayActivity.class);
@@ -260,6 +333,14 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 			Intent surfaceViewIntent = new Intent(this, SurfaceViewActivity.class);
 			startActivity(surfaceViewIntent);
 			break;
+		case R.id.clip_view_btn:
+			Intent clipIntent = new Intent(this, ClipActivity.class);
+			startActivity(clipIntent);
+			break;
+		case R.id.egg_frenzy_btn:
+			Intent eggFrenzyIntent = new Intent(this, EggFrenzyActivity.class);
+			startActivity(eggFrenzyIntent);
+			break;
 		}
 	}
 
@@ -268,6 +349,8 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 		super.onActivityResult(requestCode, resultCode, data);
 		Log.v("TAG", "onActivityResult " + resultCode);
 	}
+
+	Object[] objs = getParams();
 
 	private Object[] getParams(Object... params) {
 		Object obj = params;
@@ -326,5 +409,11 @@ public class MainActivity extends Activity implements OnClickListener, OnLongCli
 	public boolean onLongClick(View v) {
 		Log.v("-->", "onLongClick");
 		return true;
+	}
+
+	private void method() {
+		// this.recreate();
+		// this.startLockTask();
+		// this.startManagingCursor(c);
 	}
 }

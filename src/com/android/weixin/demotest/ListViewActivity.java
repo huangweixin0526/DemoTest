@@ -34,11 +34,11 @@ import android.widget.TextView;
  * @author weixin
  * 
  */
-public class ListViewActivity extends Activity implements OnClickListener,
-		OnItemClickListener {
+public class ListViewActivity extends Activity implements OnClickListener, OnItemClickListener {
 
 	private List<String> mListData;
 	private ListView mListView;
+	private ListViewAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +46,21 @@ public class ListViewActivity extends Activity implements OnClickListener,
 		setContentView(R.layout.list_data_lay);
 		initData();
 		initView();
+		Thread thread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				addData();
+			}
+		});
+		thread.start();
 	}
 
 	private void initView() {
-		ListViewAdapter adapter = new ListViewAdapter();
+		mAdapter = new ListViewAdapter();
 		mListView = (ListView) findViewById(R.id.list_lv);
 		mListView.setOnItemClickListener(this);
-		mListView.setAdapter(adapter);
+		mListView.setAdapter(mAdapter);
 	}
 
 	private void initData() {
@@ -61,6 +69,18 @@ public class ListViewActivity extends Activity implements OnClickListener,
 			String data = "List View Item Data Index " + i;
 			mListData.add(data);
 		}
+	}
+
+	private void addData() {
+		int addSize = mListData.size();
+		for (int i = addSize; i < addSize + 10; i++) {
+			String data = "List View Item Data Index " + i;
+			mListData.add(data);
+		}
+		// 当上面进入死循环时，无法调用notifyDataSetChanged时，会抛出java.lang.IllegalStateException:
+		// The content of the adapter has changed but ListView did not receive a
+		// notification异常
+		//mAdapter.notifyDataSetChanged();
 	}
 
 	public class ListViewAdapter extends BaseAdapter {
@@ -84,18 +104,14 @@ public class ListViewActivity extends Activity implements OnClickListener,
 		public View getView(int position, View convertView, ViewGroup parent) {
 			Holder holder = null;
 			if (convertView == null) {
-				convertView = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(R.layout.list_item_lay, parent, false);
+				convertView = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_item_lay, parent, false);
 				// convertView.setOnClickListener(ListViewActivity.this);
 				holder = new Holder();
-				holder.mItemText = (TextView) convertView
-						.findViewById(R.id.note_title_tv);
-				holder.mItemImage = (ImageView) convertView
-						.findViewById(R.id.note_list_share_iv);
+				holder.mItemText = (TextView) convertView.findViewById(R.id.note_title_tv);
+				holder.mItemImage = (ImageView) convertView.findViewById(R.id.note_list_share_iv);
 				// holder.mItemImage.setOnClickListener(ListViewActivity.this);
-				holder.mItemButton = (Button) convertView
-						.findViewById(R.id.bt_listitem_recommend_headshow_add);
-				// holder.mItemButton.setOnClickListener(ListViewActivity.this);
+				holder.mItemButton = (Button) convertView.findViewById(R.id.bt_listitem_recommend_headshow_add);
+				holder.mItemButton.setOnClickListener(ListViewActivity.this);
 				convertView.setTag(holder);
 			} else {
 				holder = (Holder) convertView.getTag();
@@ -120,6 +136,7 @@ public class ListViewActivity extends Activity implements OnClickListener,
 			break;
 		case R.id.bt_listitem_recommend_headshow_add:
 			Log.v("TAG", "bt_listitem_recommend_headshow_add");
+	        addData();
 			break;
 		default:
 			Log.v("TAG", "list item");
@@ -128,9 +145,7 @@ public class ListViewActivity extends Activity implements OnClickListener,
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Log.v("TAG", "onItemClick");
-
 	}
 }
